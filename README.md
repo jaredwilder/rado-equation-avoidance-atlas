@@ -1,53 +1,43 @@
-# Rado Equation Avoidance Atlas
+# Rado equation avoidance atlas
 
-**Author:** Jared Wilder  
-**Public subject home created:** 2026-09-13
-
-This repository is the focused home for a finite exact-extremal program that was previously buried inside the mixed `relation-family-atlas` release.
-
-## Problem family
-
-For integers `a,b,c` and `n >= 1`, let
+For integers `a,b,c` and `n>=1`, let
 
 \[
 f(a,b,c;n)
 \]
 
-denote the maximum cardinality of a subset of `[n]={1,...,n}` containing **no solution in distinct elements** `x,y,z` to
+be the maximum size of a subset of `[n]={1,...,n}` containing no solution in **distinct** elements `x,y,z` to
 
 \[
 ax+by=cz.
 \]
 
-The distinctness convention is load-bearing. This repository must not silently mix it with Schur-style variants that permit repeated variables.
+This repository collects exact finite extremal data for that problem family.
 
-## Recovered exact atlas
+## Recovered atlas
 
-The source sweep reports an exact atlas consisting of:
+The source audit records:
 
-- **11 complete solver-optimal sequences**;
+- **11 solver-optimal sequences**;
 - **839 exact values** in total;
-- **10 of the 11 sequences reported absent from OEIS** at the time of the sweep;
-- six of seven sampled tables independently re-derived by brute force on `n=3..20`;
-- the seventh sample being Schur's equation under the separate convention permitting `x=y`, giving `ceil(n/2)`.
+- six of seven sampled tables independently re-derived by brute force for `n=3..20`;
+- 10 of the 11 sequences absent from the OEIS search performed during the original audit.
 
-Those are source-reported audit facts. The original machine-readable 839-value atlas has **not yet been recovered into this repository**, so this front door does not pretend the full table bytes are present.
+The original machine-readable 839-value table has not yet been recovered into this repository, so only the values actually present in the surviving source are displayed here.
 
-## Concrete recovered lines
+## `x+2y=3z`
 
-### `x + 2y = 3z`
-
-The source records a solver-optimal sequence through `n=63`, beginning
+The recovered optimal sequence runs through `n=63` and begins
 
 ```text
 3,3,3,4,4,4,5,6,7,7,7,7,7,8,9,9,9,9,9,10,...,19
 ```
 
-The public mixed-source summary abbreviates the middle of this sequence. Until the original table bytes are recovered, this repository will not manufacture the omitted entries.
+The surviving summary abbreviates the middle terms; this repository does not interpolate them.
 
-### `x + 3y = 4z`
+## `x+3y=4z`
 
-The source reports the exact plateau
+The exact plateau recorded in the source is
 
 \[
 f(1,3,4;n)=20\qquad(46\le n\le64),
@@ -59,50 +49,22 @@ followed by
 f(1,3,4;65)=21.
 \]
 
-The associated construction is described as periodic with residue pattern
+A periodic construction uses the residue pattern
 
 ```text
-{0,1,3,5,6} mod 13
+{0,1,3,5,6} mod 13.
 ```
 
-and the source identifies a finite-reach mechanism behind the 19-value plateau.
+A proposed extension of the same mechanism to `x+4y=5z` failed: the measured plateau value was 20 rather than the predicted 12.
 
-A preregistered generalization from that mechanism did **not** survive measurement: the predicted rule for `x+4y=5z` missed, with the measured plateau value reported as 20 rather than 12. That failed prediction is part of the research record and is preserved rather than erased.
+## Conventions matter
 
-## What this repository claims
+Repeated variables are excluded in the definition above. This differs from Schur-type formulations that allow `x=y`; those variants should not be mixed with this table.
 
-This is an **exact finite-computation / extremal-sequence research program**, not a claim of a new general theorem in Rado theory.
+## Data status
 
-The source itself describes these results as new exact values in a natural specialization of a classical framework, and explicitly warns that structural constructions may have classical antecedents. Historical novelty/priority is therefore **not upgraded here** merely because the numbers were absent from the source's OEIS check.
+The mathematical definition, the concrete lines above, and the source audit are present. Still missing are the complete 839-value table and the solver certificates for every row. Those are source-recovery tasks, not gaps to fill by extrapolation.
 
-## Authority boundary
+The earlier mixed source is [`jaredwilder/relation-family-atlas`](https://github.com/jaredwilder/relation-family-atlas).
 
-Current static authority in this repository is:
-
-1. the mathematical definition and conventions above;
-2. the recovered audit statements copied from the public source summary;
-3. explicit publication/recovery debt below.
-
-Not yet present here:
-
-- the complete 839-value machine-readable atlas;
-- the full 11 sequence tables;
-- solver certificates/receipts for every row;
-- a fresh literature/OEIS collision audit performed from this repository.
-
-Those are recovery tasks, not license to interpolate missing data.
-
-## Provenance
-
-Primary public source before promotion:
-
-- `jaredwilder/relation-family-atlas`
-- README section **"Exact values that survive the collision"**
-
-The mixed source remains valuable provenance, but this focused repository is now the canonical public subject home for the Rado-equation avoidance atlas.
-
-## Status
-
-**PROGRAM PUBLIC / FULL DATA RECOVERY INCOMPLETE.**
-
-The exact finite results reported above are preserved with their original scope. Missing source bytes are named explicitly instead of reconstructed from guesswork.
+Author: Jared Wilder.
